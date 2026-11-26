@@ -4,7 +4,7 @@ import com.induztek.backend.model.Equipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository 
 public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     boolean existsByCodigoIgnoreCase(String codigo);

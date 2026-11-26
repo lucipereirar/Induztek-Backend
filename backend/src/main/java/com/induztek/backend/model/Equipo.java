@@ -15,8 +15,6 @@ public class Equipo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Código interno del equipo (por ejemplo "TR-001"). Es único,
-    // igual que en la app.
     @NotBlank(message = "El código del equipo es obligatorio.")
     @Size(max = 50, message = "El código no puede superar 50 caracteres.")
     @Column(nullable = false, unique = true, length = 50)
@@ -28,6 +26,9 @@ public class Equipo {
 
     @Size(max = 255, message = "La descripción no puede superar 255 caracteres.")
     private String descripcion;
+
+    @Size(max = 255, message = "La URL de la foto no puede superar 255 caracteres.")
+    private String fotoUrl;
 
     public Equipo() {
     }
@@ -69,4 +70,13 @@ public class Equipo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
+    }
+
 }
