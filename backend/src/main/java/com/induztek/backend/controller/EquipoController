@@ -1,0 +1,39 @@
+package com.induztek.backend.controller;
+
+import com.induztek.backend.model.Equipo;
+import com.induztek.backend.service.EquipoService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/equipos")
+@CrossOrigin(origins = "*")
+public class EquipoController {
+
+    private final EquipoService equipoService;
+
+    public EquipoController(EquipoService equipoService) {
+        this.equipoService = equipoService;
+    }
+
+    @GetMapping
+    public List<Equipo> obtenerTodos() {
+        return equipoService.obtenerTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Equipo obtenerPorId(@PathVariable Long id) {
+        return equipoService.obtenerPorId(id);
+    }
+
+    @PostMapping
+    public Equipo guardar(@RequestBody Equipo equipo) {
+        return equipoService.guardar(equipo);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        equipoService.eliminar(id);
+    }
+}
